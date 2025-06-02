@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Квестик</title>
+  <title>Поиск по скрытому ключу</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -17,23 +17,20 @@
     }
 
     .block {
-      border: 1px solid #424242;
+      border: 1px solid #ccc;
       padding: 15px;
       margin-bottom: 10px;
       border-radius: 8px;
-      background-color: #808080;
-      color: white;
-      font-weight: bolder;
-      font-style: oblique;
+      background-color: #f9f9f9;
       display: none; /* Скрыты по умолчанию */
     }
   </style>
 </head>
 <body>
   <h1>Введите пароль.</h1>
-  <input type="text" id="searchInput" placeholder="Введите четырёх-значное число">
+  <input type="text" id="searchInput" placeholder="Введите четырёх-значное число.">
 
-  <a href=""><div class="block">1985</div></a>
+  <div class="block" data-key="1985">Воу, да ты догадался(-ась)! Окей, тогда держи победный код: 0192</div>
 
   <script>
     const input = document.getElementById('searchInput');
@@ -43,8 +40,8 @@
       const searchText = input.value.trim().toLowerCase();
 
       blocks.forEach(block => {
-        const text = block.textContent.trim().toLowerCase();
-        block.style.display = text === searchText ? 'block' : 'none';
+        const key = block.getAttribute('data-key')?.toLowerCase();
+        block.style.display = key === searchText ? 'block' : 'none';
       });
     });
   </script>
