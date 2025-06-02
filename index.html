@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Квестик</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    input[type="text"] {
+      width: 300px;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .block {
+      border: 1px solid #424242;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      background-color: #808080;
+      color: white;
+      font-weight: bolder;
+      font-style: oblique;
+      display: none; /* Скрыты по умолчанию */
+    }
+  </style>
+</head>
+<body>
+  <h1>Введите пароль.</h1>
+  <input type="text" id="searchInput" placeholder="Введите четырёх-значное число">
+
+  <a href=""><div class="block">1985</div></a>
+
+  <script>
+    const input = document.getElementById('searchInput');
+    const blocks = document.querySelectorAll('.block');
+
+    input.addEventListener('input', () => {
+      const searchText = input.value.trim().toLowerCase();
+
+      blocks.forEach(block => {
+        const text = block.textContent.trim().toLowerCase();
+        block.style.display = text === searchText ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
